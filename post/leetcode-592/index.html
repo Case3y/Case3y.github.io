@@ -1,0 +1,154 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>LeetCode 592 - Casey's Blog</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=author content="Casey"><meta name=description content="leetcode-592 问题描述 给定一个表示分数加减运算的字符串 expression ，你需要返回一个字符串形式的计算结果。 这个结果应该是不可约分的分数，即最简分数。 如果最终结果是一"><meta name=keywords content="Hugo,theme,even"><meta name=generator content="Hugo 0.105.0 with theme even"><link rel=canonical href=http://localhost:1313/post/leetcode-592/><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/manifest.json><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link href=/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css rel=stylesheet><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous><meta property="og:title" content="LeetCode 592"><meta property="og:description" content="leetcode-592 问题描述 给定一个表示分数加减运算的字符串 expression ，你需要返回一个字符串形式的计算结果。 这个结果应该是不可约分的分数，即最简分数。 如果最终结果是一"><meta property="og:type" content="article"><meta property="og:url" content="http://localhost:1313/post/leetcode-592/"><meta property="article:section" content="post"><meta property="article:published_time" content="2022-10-03T15:11:21+08:00"><meta property="article:modified_time" content="2022-10-03T15:11:21+08:00"><meta itemprop=name content="LeetCode 592"><meta itemprop=description content="leetcode-592 问题描述 给定一个表示分数加减运算的字符串 expression ，你需要返回一个字符串形式的计算结果。 这个结果应该是不可约分的分数，即最简分数。 如果最终结果是一"><meta itemprop=datePublished content="2022-10-03T15:11:21+08:00"><meta itemprop=dateModified content="2022-10-03T15:11:21+08:00"><meta itemprop=wordCount content="882"><meta itemprop=keywords content="算法,"><meta name=twitter:card content="summary"><meta name=twitter:title content="LeetCode 592"><meta name=twitter:description content="leetcode-592 问题描述 给定一个表示分数加减运算的字符串 expression ，你需要返回一个字符串形式的计算结果。 这个结果应该是不可约分的分数，即最简分数。 如果最终结果是一"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>Casey</a></div><div class=mobile-navbar-icon><span></span>
+<span></span>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><a href=/><li class=mobile-menu-item>主页</li></a><a href=/post/><li class=mobile-menu-item>归档</li></a><a href=/tags/><li class=mobile-menu-item>标签</li></a><a href=/categories/><li class=mobile-menu-item>分类</li></a><a href=/about/><li class=mobile-menu-item>关于</li></a></ul></nav><div class=container id=mobile-panel><header id=header class=header><div class=logo-wrapper><a href=/ class=logo>Casey</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=/>主页</a></li><li class=menu-item><a class=menu-item-link href=/post/>归档</a></li><li class=menu-item><a class=menu-item-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-item-link href=/categories/>分类</a></li><li class=menu-item><a class=menu-item-link href=/about/>关于</a></li></ul></nav></header><main id=main class=main><div class=content-wrapper><div id=content class=content><article class=post><header class=post-header><h1 class=post-title>LeetCode 592</h1><div class=post-meta><span class=post-time>2022-10-03</span><div class=post-category><a href=/categories/%E6%8A%80%E6%9C%AF/>技术</a></div></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class="post-toc-content always-active"><nav id=TableOfContents><ul><li><ul><li><a href=#leetcode-592-问题描述>leetcode-592 问题描述</a><ul><li><a href=#示例>示例</a></li></ul></li><li><a href=#题解>题解</a></li><li><a href=#代码python>代码（Python）</a></li><li><a href=#问题转变>问题转变</a></li><li><a href=#python代码总结>Python代码总结</a></li></ul></li></ul></nav></div></div><div class=post-content><h2 id=leetcode-592-问题描述>leetcode-592 问题描述</h2><p>给定一个表示分数加减运算的字符串 expression ，你需要返回一个字符串形式的计算结果。 </p><p>这个结果应该是不可约分的分数，即最简分数。 如果最终结果是一个整数，例如 2，你需要将它转换成分数形式，其分母为 1。所以在上述例子中, 2 应该被转换为 2/1。</p><h3 id=示例>示例</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>输入: expression = &#34;-1/2+1/2&#34;
+</span></span><span class=line><span class=cl>输出: &#34;0/1&#34;
+</span></span></code></pre></td></tr></table></div></div><h2 id=题解>题解</h2><p>对于两个分数 $\dfrac{x_1}{y_1}$ 和 $\dfrac{x_2}{y_2}$，它们相加的结果为：</p><p>$\dfrac{x_1 \times y_2 + x_2 \times y_1}{y_1 \times y_2}$</p><p>初始分数的分子为 $\textit{x} = 0$，分母为 $\textit{y} = 1$。我们不断从字符串中获取下一个分数，它的分子为 $\textit{x}_1$，分母为 $\textit{y}_1$，将它加到初始分数上，有：</p><div>$$
+\begin{cases} \textit{x} = \textit{x} \times \textit{y}_1 + \textit{x}_1 \times \textit{y} \\ \textit{y} = \textit{y} \times \textit{y}_1 \end{cases}
+$$</div><p>最后如果 $\textit{x} = 0$，说明结果为零，直接返回 $\text{“0/1”}$；否则计算分子分母的最大公约数，返回约简后分数的字符串表示。</p><h2 id=代码python>代码（Python）</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>class Solution:
+</span></span><span class=line><span class=cl>    def fractionAddition(self, expression: str) -&gt; str:
+</span></span><span class=line><span class=cl>        x, y = 0, 1  # 分子，分母
+</span></span><span class=line><span class=cl>        i, n = 0, len(expression)
+</span></span><span class=line><span class=cl>        while i &lt; n:
+</span></span><span class=line><span class=cl>            # 读取分子
+</span></span><span class=line><span class=cl>            x1, sign = 0, 1
+</span></span><span class=line><span class=cl>            if expression[i] == &#39;-&#39; or expression[i] == &#39;+&#39;:
+</span></span><span class=line><span class=cl>                if expression[i] == &#39;-&#39;:
+</span></span><span class=line><span class=cl>                    sign = -1
+</span></span><span class=line><span class=cl>                i += 1
+</span></span><span class=line><span class=cl>            while i &lt; n and expression[i].isdigit():
+</span></span><span class=line><span class=cl>                x1 = x1 * 10 + int(expression[i])
+</span></span><span class=line><span class=cl>                i += 1
+</span></span><span class=line><span class=cl>            x1 = sign * x1
+</span></span><span class=line><span class=cl>            i += 1
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            # 读取分母
+</span></span><span class=line><span class=cl>            y1 = 0
+</span></span><span class=line><span class=cl>            while i &lt; n and expression[i].isdigit():
+</span></span><span class=line><span class=cl>                y1 = y1 * 10 + int(expression[i])
+</span></span><span class=line><span class=cl>                i += 1
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            x = x * y1 + x1 * y
+</span></span><span class=line><span class=cl>            y *= y1
+</span></span><span class=line><span class=cl>        if x == 0:
+</span></span><span class=line><span class=cl>            return &#34;0/1&#34;
+</span></span><span class=line><span class=cl>        g = gcd(abs(x), y)
+</span></span><span class=line><span class=cl>        return f&#34;{x // g}/{y // g}&#34;
+</span></span></code></pre></td></tr></table></div></div><h2 id=问题转变>问题转变</h2><p>将问题转变一下，若字符串中能出现整数，代码需要稍微改动一下。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>class Solution:
+</span></span><span class=line><span class=cl>    # @classmethod
+</span></span><span class=line><span class=cl>    def fractionAddition(self, expression: str):
+</span></span><span class=line><span class=cl>            x, y = 0, 1  # 分子，分母
+</span></span><span class=line><span class=cl>            i, n = 0, len(expression)
+</span></span><span class=line><span class=cl>            while i &lt; n:
+</span></span><span class=line><span class=cl>                # 读取分子
+</span></span><span class=line><span class=cl>                x1, sign = 0, 1
+</span></span><span class=line><span class=cl>                if expression[i] == &#39;-&#39; or expression[i] == &#39;+&#39;:
+</span></span><span class=line><span class=cl>                    if expression[i] == &#39;-&#39;:
+</span></span><span class=line><span class=cl>                        sign = -1
+</span></span><span class=line><span class=cl>                    i += 1
+</span></span><span class=line><span class=cl>                while i &lt; n and expression[i].isdigit():
+</span></span><span class=line><span class=cl>                    x1 = x1 * 10 + int(expression[i])
+</span></span><span class=line><span class=cl>                    i += 1
+</span></span><span class=line><span class=cl>                x1 = sign * x1
+</span></span><span class=line><span class=cl>                # 当读取到 &#39;/&#39; 时跳过
+</span></span><span class=line><span class=cl>                if expression[i] == &#39;/&#39;:
+</span></span><span class=line><span class=cl>                    i += 1
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                # 读取分母
+</span></span><span class=line><span class=cl>                if expression[i].isdigit():
+</span></span><span class=line><span class=cl>                    y1 = 0
+</span></span><span class=line><span class=cl>                    while i &lt; n and expression[i].isdigit():
+</span></span><span class=line><span class=cl>                        y1 = y1 * 10 + int(expression[i])
+</span></span><span class=line><span class=cl>                        i += 1
+</span></span><span class=line><span class=cl>                else:
+</span></span><span class=line><span class=cl>                    # 若为整数，则分母直接等于 1
+</span></span><span class=line><span class=cl>                    y1 = 1
+</span></span><span class=line><span class=cl>                x = x * y1 + x1 * y
+</span></span><span class=line><span class=cl>                y *= y1
+</span></span><span class=line><span class=cl>            if x == 0:
+</span></span><span class=line><span class=cl>                return &#34;0/1&#34;
+</span></span><span class=line><span class=cl>            g = math.gcd(abs(x), y)
+</span></span><span class=line><span class=cl>            return f&#34;{x // g}/{y // g}&#34;
+</span></span></code></pre></td></tr></table></div></div><h2 id=python代码总结>Python代码总结</h2><p><code>gcd()</code> 函数用于计算两个或多个整数的最大公约数</p><p><code>//</code> 运算符是取整除 - 返回商的整数部分（向下取整）</p><p>报错：<code>Python: TypeError: xxx() missing 1 required positional argument: ‘xx’</code></p><p>解决：调用一个类的方法需要先实例化，若不实例化应该用<code>class().fun(argument)</code> 来调用类的方法</p></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>Casey</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>2022-10-03</span></p></div><footer class=post-footer><div class=post-tags><a href=/tags/%E7%AE%97%E6%B3%95/>算法</a></div><nav class=post-nav><a class=prev href=/post/anaconda-config/><i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">Anaconda 相关配置</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/stop-it/><span class="next-text nav-default">放弃折腾</span>
+<span class="next-text nav-mobile">下一篇</span>
+<i class="iconfont icon-right"></i></a></nav></footer></article></div></div></main><footer id=footer class=footer><div class=social-links><a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a></div><div class=copyright><span class=power-by>由 <a class=hexo-link href=https://gohugo.io>Hugo</a> 强力驱动</span>
+<span class=division>|</span>
+<span class=theme-info>主题 -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a></span>
+<span class=copyright-year>&copy;
+2022<span class=heart><i class="iconfont icon-heart"></i></span><span>Casey</span></span></div></footer><div class=back-to-top id=back-to-top><i class="iconfont icon-up"></i></div></div><script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js></script>
+<script type=text/javascript>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script async src=https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin=anonymous></script></body></html>
